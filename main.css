@@ -1,0 +1,120 @@
+#my_heading_h4{
+  font-size: 60px;
+}
+body{
+  font-family: 'Open Sans',sans-serif;
+}
+#image_section{
+  width: 55%;
+}
+.play_game{
+  padding: 10px;
+  font-size: 15px;
+  border: none;
+  background-color: #59597B;
+  color: white;
+  margin: 40px;
+}
+#under_line{
+  font-family: 'Open Sans',sans-serif;
+  font-size: 20px;
+}
+#all_text{
+  margin-top: 70px;
+  margin-left: 40px;
+  width: 40%;
+  text-align: left;
+}
+#my_h1{
+  font-family: 'Open Sans', sans-serif;
+  font-size: 60px;
+  font-weight: bold;
+  color: #333;
+}
+.hero_section{
+  float: left;
+}
+#hero_image{
+  height: 470px;
+  width: 470px;
+  margin-top: 40px;
+}
+.aligning{
+  float: left;
+  margin: 50px;
+}
+#my_div{  
+  text-align: left;
+} 
+h2{
+  font-size: 70px;
+}
+#your_div{
+  text-align: center;
+}
+.my_icon{
+  height: 250px;
+  width: 250px;
+}
+#topMenu {
+    position: fixed;
+    background: #CFD8DC;
+    width: 100%;
+    margin-top: 0px;
+    top: 0px;
+    z-index: 10;
+    height: 7%;
+}
+.links {
+    display: inline;
+    padding-left: 33px;
+    padding-right: 25px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px
+}
+.image {
+    width: 300px;
+    height: 475px;
+    border-style: solid;
+    border-width: 5px;
+    color: black;
+    margin: 0px;
+}
+h4{
+    font-size: 60px;
+}
+span{
+    text-align: center;
+}
+.text{
+    font-size: 30px;
+}
+.topnav {
+    background-color: #333;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
+  
+  /* Style the links inside the navigation bar */
+  .topnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  
+  /* Change the color of links on hover */
+  .topnav a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+  
+  /* Add a color to the active/current link */
+  .topnav a.active {
+    background-color: #59597B;
+    color: white;
+  }
