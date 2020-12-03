@@ -1,3 +1,22 @@
+var firebaseConfig = {
+    apiKey: "AIzaSyBweuVUFZjU1u8AnBLKbI5R3SINR9sKlFM",
+    authDomain: "yep-2020.firebaseapp.com",
+    databaseURL: "https://yep-2020.firebaseio.com",
+    projectId: "yep-2020",
+    storageBucket: "yep-2020.appspot.com",
+    messagingSenderId: "653623928823",
+    appId: "1:653623928823:web:6679c1f971dc5cc59230f2"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+
+  this.database = firebase.database();
+
+hextrisRef=this.database.ref('/Hextris');
+
+localStorage.setItem("highscores","[0]");
+
+
 function scaleCanvas() {
 	canvas.width = $(window).width();
 	canvas.height = $(window).height();
@@ -104,11 +123,17 @@ function init(b) {
 		clearSaveState();
 		checkVisualElements(1);
 	}
-	if (highscores.length === 0 ){
+	if (highscores.length == 0 ){
 		$("#currentHighScore").text(0);
 	}
 	else {
-		$("#currentHighScore").text(highscores[0])
+		$("#currentHighScore").text(highscores[0]);
+		/*console.log(highscores[0]);
+		ticketNumber = localStorage.getItem("TicketNumber");
+		hextrisRef.child(ticketNumber).update({
+		  Score:highscores[0]
+		});*/
+
 	}
 	infobuttonfading = true;
 	$("#pauseBtn").attr('src',"./images/btn_pause.svg");
@@ -343,6 +368,11 @@ function checkGameOver() {
 			}
 			writeHighScores();
 			gameOverDisplay();
+			ticketNumber = localStorage.getItem("TicketNumber");
+			hextrisRef.child(ticketNumber).update({
+			  Score:highscores[0]
+			});
+
 			return true;
 		}
 	}
