@@ -5,8 +5,11 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    </head> 
-    <body> 
+        
+        <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-firestore.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
+    <body id="my_body"> 
         <center>       
     <nav>
         <div class="topnav">
@@ -21,18 +24,40 @@
         <br>
         <br>
         <br>
+        
+</head>
+<body>
+
+<div class="form-popup" id="myForm">
+  <form action="/action_page.php" class="form-container">
+    <h1>Login</h1>
+    <label id="error_text"></label>
+    <br><br>
+    
+
+    <label for="ticket_number"><b>Ticket Number</b></label>
+    <input type="text" placeholder="Enter Ticket Number" name="ticket_number" id="ticketNumber" required>
+
+    <label for="name"><b>Name</b></label>
+    <input type="text" placeholder="Enter Name" name="user_name" id="userName"required>
+
+    <button type="button" class="btn" onclick="login()">Login</button>
+    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+  </form>
+</div>
         <div>
             <h4 id="my_heading_h4">Games</h4>
             <br>
             <center>
             <span style="display: inline;">
-                <a href="/hextris/index.html" target="_blank"><img src="hextrisCover.png" class="image"></a>
+                <img src="hextrisCover.png" class="image" onclick="openForm('hextris')">
             </span> &nbsp;&nbsp;
             <span style="display: inline;">
-            <a href="/pacman-canvas-master/index.htm" target="_blank"><img src="pacmanCover.png" class="image"></a>
+            <img src="pacmanCover.png" class="image" onclick="openForm('pacman')">
         </span>
     </center>
         </div>  
     </center>      
-    </body>     
+    </body>   
+    <script src="games.js"></script>  
 </html>

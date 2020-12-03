@@ -144,6 +144,7 @@ function geronimo() {
 		this.running = false;
 		this.pause = true;
 		this.score = new Score();
+		console.log(this.score);
 		this.soundfx = 0;
 		this.map;
 		this.pillCount;				// number of pills
@@ -404,6 +405,7 @@ function geronimo() {
 			if (state === 0) {
 				this.score.set(0);
 				this.score.refresh(".score");
+				console.log(this.score);
 				pacman.lives = 3;
 				game.level = 1;
 				this.refreshLevel(".level");
@@ -545,6 +547,7 @@ function geronimo() {
 		};
 		this.refresh = function (h) {
 			$(h).html("Score: " + this.score);
+			console.log(this.score);
 		};
 
 	}
