@@ -1,16 +1,26 @@
+
+
+.logo_image{
+	height: 50px;
+	padding: 0px;
+	margin: 0px;
+	vertical-align: 0px;
+  }
 .topnav {
-    background-color: #333;
-    overflow: hidden;
+    background-color: white;
+    color: #333;
     position: fixed;
-	top: 0;
-	font-family: 'Open Sans', sans-serif;
-    width: 100%;
+    top: 0;
+    left:12%;
+    width: 88%;
+    height: 60px;
+
   }
   
   /* Style the links inside the navigation bar */
   .topnav a {
+    color: #333;
     float: left;
-    color: #f2f2f2;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
@@ -25,7 +35,7 @@
   
   /* Add a color to the active/current link */
   .topnav a.active {
-    background-color: #59597B;
+    background-color:#d60b19;
     color: white;
   }
 * {
@@ -381,7 +391,7 @@ button:focus {
 body {
 	color:#ecf0f1;
 	font-family:'Open Sans', sans-serif;
-	background-color:#ecf0f1;
+	background-color:white;
 }
 
 #clickToExit {
@@ -395,7 +405,7 @@ body {
 	right:0;
 	height:100%;
 	width:100%;
-	background-color:#ecf0f1;
+	background-color:white;
 	z-index:0;
 }
 #title {

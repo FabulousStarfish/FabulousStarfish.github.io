@@ -1,3 +1,21 @@
+var firebaseConfig = {
+  apiKey: "AIzaSyBweuVUFZjU1u8AnBLKbI5R3SINR9sKlFM",
+  authDomain: "yep-2020.firebaseapp.com",
+  databaseURL: "https://yep-2020.firebaseio.com",
+  projectId: "yep-2020",
+  storageBucket: "yep-2020.appspot.com",
+  messagingSenderId: "653623928823",
+  appId: "1:653623928823:web:6679c1f971dc5cc59230f2"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
+this.database = firebase.database();
+
+twozerofoureightRef=this.database.ref('/2048');
+localStorage.setItem("bestScore","0");
+
+
 function GameManager(size, InputManager, Actuator, StorageManager) {
   this.size           = size; // Size of the grid
   this.inputManager   = new InputManager;
@@ -184,6 +202,11 @@ GameManager.prototype.move = function (direction) {
 
     if (!this.movesAvailable()) {
       this.over = true; // Game over!
+      var bestScore = localStorage.getItem("bestScore");
+      ticketNumber = localStorage.getItem("TicketNumber");
+			        twozerofoureightRef.child(ticketNumber).update({
+				    Score:bestScore
+			  });
     }
 
     this.actuate();

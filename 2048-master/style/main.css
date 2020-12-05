@@ -1,10 +1,49 @@
+
+.logo_image{
+  height: 50px;
+  padding: 0px;
+  margin: 0px;
+  vertical-align: 0px;
+}
+.topnav {
+  background-color: white;
+  color: #333;
+  position: fixed;
+  top: 0;
+  left:12%;
+  width: 88%;
+  height: 60px;
+
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  color: #333;
+  float: left;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+  background-color:#d60b19;
+  color: white;
+}
 @import url(fonts/clear-sans.css);
 html, body {
   margin: 0;
   padding: 0;
   background: #faf8ef;
   color: #776e65;
-  font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
+  font-family: "Open Sans",sans-serif;
   font-size: 18px; }
 
 body {
