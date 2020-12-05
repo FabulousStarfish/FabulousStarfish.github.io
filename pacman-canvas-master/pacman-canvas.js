@@ -9,6 +9,22 @@
 	author: platzh1rsch		(www.platzh1rsch.ch)
 	
 -------------------------------------------------------------------*/
+var firebaseConfig = {
+    apiKey: "AIzaSyBweuVUFZjU1u8AnBLKbI5R3SINR9sKlFM",
+    authDomain: "yep-2020.firebaseapp.com",
+    databaseURL: "https://yep-2020.firebaseio.com",
+    projectId: "yep-2020",
+    storageBucket: "yep-2020.appspot.com",
+    messagingSenderId: "653623928823",
+    appId: "1:653623928823:web:6679c1f971dc5cc59230f2"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+
+  this.database = firebase.database();
+
+pacManRef=this.database.ref('/PacMan');
+
 
 "use strict";
 
@@ -29,6 +45,7 @@ function geronimo() {
 	var inky, blinky, clyde, pinky;
 
 	var mapConfig = "data/map.json";
+	localStorage.setItem("pacman_highscores","0");
 
 
 	/* AJAX stuff */
@@ -1210,6 +1227,14 @@ function geronimo() {
 				var input = "<div id='highscore-form'><span id='form-validater'></span><input type='text' id='playerName'/><span class='button' id='score-submit'>save</span></div>";
 				game.showMessage("Game over", "Total Score: " + game.score.score + input);
 				game.gameOver = true;
+				var previousScore=localStorage.getItem("pacman_highscores");
+				if(game.score.score>previousScore){
+					localStorage.setItem("pacman_highscores",game.score.score);				
+					ticketNumber = localStorage.getItem("TicketNumber");
+			        pacManRef.child(ticketNumber).update({
+				    Score:game.score.score
+			  });
+				}
 				$('#playerName').focus();
 			}
 			game.drawHearts(this.lives);

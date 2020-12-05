@@ -1,14 +1,44 @@
 /* Button used to open the contact form - fixed at the bottom of the page */
-.logo_image{
-  left: 0px;
-  top: 0;
-  height: 10px;
-}
-#img_link:hover{
+
+/*#img_link:hover{
   background-color: white;
+}*/
+
+#b_color{
+  color: #d60b19;
+}
+#LeaderboardH{
+ border:2px solid #d60b19; 
+ border-spacing: 23;
+}
+#LeaderboardP{
+  border:2px solid #d60b19; 
+  border-spacing: 23;  
+}
+#LeaderboardT{
+  border:2px solid #d60b19; 
+  border-spacing: 23;  
+}
+th{
+ border: 1px solid #d60b19;
+  border-left:none;
+  border-right:none;
+  background-color:#d60b19 ;
+  color:white;
+  margin: 10px;
+
+}
+.game_name{
+  font-size: 30px;
+}
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 10px;
+  height: 300px; 
+  column-gap: 40px;
 }
 .open-button {
-  background-color: #555;
   color: white;
   padding: 16px 20px;
   border: none;
@@ -76,6 +106,7 @@
   height: 50px;
   padding: 0px;
   margin: 0px;
+  left: 30px;
   vertical-align: 0px;
 }
 #my_heading_h4{
@@ -91,7 +122,7 @@ body{
   padding: 10px;
   font-size: 15px;
   border: none;
-  background-color: #59597B;
+  background-color: #d60b19;
   color: white;
   margin: 40px;
 }
@@ -109,7 +140,7 @@ body{
   font-family: 'Open Sans', sans-serif;
   font-size: 60px;
   font-weight: bold;
-  color: #333;
+  color:#535461;
 }
 .hero_section{
   float: left;
@@ -153,11 +184,11 @@ h2{
     font-size: 20px
 }
 .image {
-    width: 300px;
-    height: 475px;
+    width: 250px;
+    height: 400px;
     border-style: solid;
-    border-width: 5px;
-    color: black;
+    border-width: 1px;
+    color: #333;
     margin: 0px;
 }
 h4{
@@ -174,8 +205,10 @@ span{
     color: #333;
     position: fixed;
     top: 0;
-    width: 100%;
+    left:13%;
+    width: 85%;
     height: 60px;
+
   }
   
   /* Style the links inside the navigation bar */
@@ -196,10 +229,17 @@ span{
   
   /* Add a color to the active/current link */
   .topnav a.active {
-    background-color:#59597B;
+    background-color:#d60b19;
     color: white;
   }
   #error_text{
     font-size: 15px;
     color: red;
+  }
+  .logo_image{
+    left: 100;
+    top: 5;
+    height: 50px;
+    margin-top: 5px;
+    margin-left: 20px;
   }

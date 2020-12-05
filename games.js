@@ -12,12 +12,10 @@ var firebaseConfig = {
   console.log(firebaseConfig);
 
   /*function Hello(){
-  firebase.database().ref("/").child("2049").update({
-    
-      TicketNumber: 'Test_Number',
-      UserName: 'Test_User',
-      Status:'Playing',
-    purpose:"Adding Ticket Code"
+  firebase.database().ref("/Tickets").child("MGMTST08").update({    
+      TicketNumber: 'MGMTST08',
+      UserName: 'Test_User_8',
+      Status:'Playing'
   });
   console.log("Hello");
 }
@@ -27,6 +25,58 @@ ticketRef=this.database.ref('/Tickets');
 hextrisRef=this.database.ref('/Hextris');
 pacmanRef=this.database.ref('/PacMan');
 twozerofoureightRef=this.database.ref('/2048');
+var topTenHextris=this.database.ref("/Hextris").orderByChild("Score").limitToLast(5);
+
+topTenHextris.once('value', function(snapshot){
+    console.log("hello")
+    if(snapshot.exists()){
+        var content = '';
+        snapshot.forEach(function(data){
+            var val = data.val();
+            content +='<tr>';
+            content += '<td>' + val.UserName + '</td>';
+            content += '<td>' + val.TicketNumber + '</td>';
+            content += '<td>' + val.Score + '</td>';
+            content += '</tr>';
+        });
+        $('#LeaderboardH').append(content);
+    }
+});
+
+var topTenPacMan=this.database.ref("/PacMan").orderByChild("Score").limitToLast(5);
+
+topTenPacMan.once('value', function(snapshot){
+    console.log("hello")
+    if(snapshot.exists()){
+        var content = '';
+        snapshot.forEach(function(data){
+            var val = data.val();
+            content +='<tr>';
+            content += '<td>' + val.UserName + '</td>';
+            content += '<td>' + val.TicketNumber + '</td>';
+            content += '<td>' + val.Score + '</td>';
+            content += '</tr>';
+        });
+        $('#LeaderboardP').append(content);
+    }
+});  
+var topTen2048=this.database.ref("/2048").orderByChild("Score").limitToLast(5);
+
+topTen2048.once('value', function(snapshot){
+    console.log("hello")
+    if(snapshot.exists()){
+        var content = '';
+        snapshot.forEach(function(data){
+            var val = data.val();
+            content +='<tr>';
+            content += '<td>' + val.UserName + '</td>';
+            content += '<td>' + val.TicketNumber + '</td>';
+            content += '<td>' + val.Score + '</td>';
+            content += '</tr>';
+        });
+        $('#LeaderboardT').append(content);
+    }
+});  
 
   function login(){
     gameName=localStorage.getItem("gameName");
@@ -60,7 +110,15 @@ twozerofoureightRef=this.database.ref('/2048');
              Score:0
            });
            window.location="/pacman-canvas-master/index.htm";
-         }    
+         }   
+         else if(gameName=='2048'){
+          twozerofoureightRef.child(ticketNumber).set({
+            TicketNumber: ticketNumber,
+            UserName: userName,
+            Score:0
+          });
+          window.location="/2048-master/index.html";
+        }    
          console.log(gameName);
       }
       else{
