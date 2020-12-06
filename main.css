@@ -92,10 +92,11 @@ th{
 }
 .game_name{
   font-size: 30px;
+  color: #535461;
 }
 .column {
   float: left;
-  width: 33.33%;
+  width: 33%;
   padding: 10px;
   height: 300px; 
   column-gap: 40px;
@@ -179,6 +180,7 @@ th{
   height: 50px;
   margin-top: 5px;
   margin-left: 20px;
+  position: fixed;
 }
 #my_heading_h4{
   font-size: 60px;
@@ -306,11 +308,4 @@ span{
   #error_text{
     font-size: 15px;
     color: red;
-  }
-  .logo_image{
-    left: 100;
-    top: 5;
-    height: 50px;
-    margin-top: 5px;
-    margin-left: 20px;
   }

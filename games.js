@@ -25,65 +25,84 @@ ticketRef=this.database.ref('/Tickets');
 hextrisRef=this.database.ref('/Hextris');
 pacmanRef=this.database.ref('/PacMan');
 twozerofoureightRef=this.database.ref('/2048');
-var topTenHextris=this.database.ref("/Hextris").orderByChild("Score").limitToLast(5);
+var topTenHextris=this.database.ref("/Hextris").orderByChild("Score").limitToLast(10);
 
 topTenHextris.once('value', function(snapshot){
     console.log("hello")
     if(snapshot.exists()){
         var content = '';
+        let scoresAr=[];
         snapshot.forEach(function(data){
             var val = data.val();
-            content +='<tr>';
-            content += '<td>' + val.UserName + '</td>';
-            content += '<td>' + val.TicketNumber + '</td>';
-            content += '<td>' + val.Score + '</td>';
-            content += '</tr>';
+            scoresAr.push(val);
+        });
+        scoresAr=scoresAr.reverse();
+        scoresAr.forEach(function(val){
+          content +='<tr>';
+          content += '<td>' + val.UserName + '</td>';
+          content += '<td>' + val.TicketNumber + '</td>';
+          content += '<td>' + val.Score + '</td>';
+          content += '</tr>';
         });
         $('#LeaderboardH').append(content);
     }
 });
 
-var topTenPacMan=this.database.ref("/PacMan").orderByChild("Score").limitToLast(5);
+var topTenPacMan=this.database.ref("/PacMan").orderByChild("Score").limitToLast(10);
 
 topTenPacMan.once('value', function(snapshot){
     console.log("hello")
     if(snapshot.exists()){
-        var content = '';
-        snapshot.forEach(function(data){
-            var val = data.val();
-            content +='<tr>';
-            content += '<td>' + val.UserName + '</td>';
-            content += '<td>' + val.TicketNumber + '</td>';
-            content += '<td>' + val.Score + '</td>';
-            content += '</tr>';
-        });
-        $('#LeaderboardP').append(content);
-    }
+      var content = '';
+      let scoresAr=[];
+      snapshot.forEach(function(data){
+          var val = data.val();
+          scoresAr.push(val);
+      });
+      scoresAr=scoresAr.reverse();
+      scoresAr.forEach(function(val){
+        content +='<tr>';
+        content += '<td>' + val.UserName + '</td>';
+        content += '<td>' + val.TicketNumber + '</td>';
+        content += '<td>' + val.Score + '</td>';
+        content += '</tr>';
+      });
+      $('#LeaderboardP').append(content);
+  }
 });  
-var topTen2048=this.database.ref("/2048").orderByChild("Score").limitToLast(5);
+var topTen2048=this.database.ref("/2048").orderByChild("Score").limitToLast(10);
 
 topTen2048.once('value', function(snapshot){
     console.log("hello")
     if(snapshot.exists()){
-        var content = '';
-        snapshot.forEach(function(data){
-            var val = data.val();
-            content +='<tr>';
-            content += '<td>' + val.UserName + '</td>';
-            content += '<td>' + val.TicketNumber + '</td>';
-            content += '<td>' + val.Score + '</td>';
-            content += '</tr>';
-        });
-        $('#LeaderboardT').append(content);
-    }
+      var content = '';
+      let scoresAr=[];
+      snapshot.forEach(function(data){
+          var val = data.val();
+          scoresAr.push(val);
+      });
+      scoresAr=scoresAr.reverse();
+      scoresAr.forEach(function(val){
+        content +='<tr>';
+        content += '<td>' + val.UserName + '</td>';
+        content += '<td>' + val.TicketNumber + '</td>';
+        content += '<td>' + val.Score + '</td>';
+        content += '</tr>';
+      });
+      $('#LeaderboardT').append(content);
+  }
 });  
 
   function login(){
     gameName=localStorage.getItem("gameName");
     ticketNumber=document.getElementById("ticketNumber").value;  
     userName=document.getElementById("userName").value; 
-
-    firebase.database().ref(`Tickets/${ticketNumber}/TicketNumber`).once("value", snapshot => {
+    
+    if(userName==""){      
+      document.getElementById("error_text").innerHTML="Please Enter Your Name"  ;    
+    }
+    else{
+      firebase.database().ref(`Tickets/${ticketNumber}/TicketNumber`).once("value", snapshot => {
       if (snapshot.exists()){
          console.log("exists!");
 
@@ -125,6 +144,8 @@ topTen2048.once('value', function(snapshot){
         document.getElementById("error_text").innerHTML="Invalid Ticket"
       }
    });
+
+    }
     }
 function openForm(game) {
   document.getElementById("myForm").style.display = "block";
