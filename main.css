@@ -3,6 +3,50 @@
 /*#img_link:hover{
   background-color: white;
 }*/
+.one_question{
+  border-bottom: 1px solid #dedede;
+  width: 100%;  
+  padding: 7px 2% 7px 5%;
+}
+.my_faqs{
+  padding:13px;
+  font-size: 18px;
+  color: #535461;
+}
+#whole_questions{
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.096);
+    border-radius: 10px;
+    margin: 1em 0;
+    width: 100%;
+}
+.top{
+  height: 30px;
+  font-size: 23px;
+  padding-bottom: 12px;
+  padding-left: 10px;
+}
+.my_hidden{
+  visibility: hidden;
+}
+#line{
+  background: #d60b19;
+  width: 24px;
+  height: 6px;
+}
+#line ::after{
+  box-sizing: border-box;
+}
+#about_us_text{
+  margin-top: 130px;
+  margin-left: 0px;
+  padding-right: 20px;
+  width: 55%;
+  text-align: left;
+}
+#about_us_image{
+  padding: 20px;
+  width: 45%;
+}
 * {
   box-sizing: border-box;
 }
@@ -165,32 +209,14 @@ th{
 .form-container .btn:hover, .open-button:hover {
   opacity: 1;
 }
-/*.logo_image{
-  height: 50px;
-  padding: 0px;
-  margin: 0px;
-  left: 30px;
-  vertical-align: 0px;
-  position: sticky;
-}*/
 
-.logo_image{
-  left:0;
-  top: 5;
-  height: 50px;
-  margin-top: 5px;
-  margin-left: 20px;
-  position: fixed;
-}
 #my_heading_h4{
   font-size: 60px;
 }
 body{
   font-family: 'Open Sans',sans-serif;
 }
-#image_section{
-  width: 55%;
-}
+
 .play_game{
   padding: 10px;
   font-size: 15px;
@@ -202,6 +228,7 @@ body{
 #under_line{
   font-family: 'Open Sans',sans-serif;
   font-size: 20px;
+  color: #535461;
 }
 #all_text{
   margin-top: 70px;
@@ -273,14 +300,26 @@ span{
 .text{
     font-size: 30px;
 }
+
+.logo_image{
+  left:0;
+  top: 0;
+  height: 50px;
+  padding-top: 5px;
+  padding-right: 20px;
+  padding-left: 20px;
+  background-color: white;
+  position: fixed;
+}
 .topnav {
     background-color: white;
     color: #333;
     position: fixed;
     top: 0;
-    left:13%;
+    padding-top: 0px;
+    left:11%;
     width: 85%;
-    height: 60px;
+    height: 55px;
 
   }
   
@@ -308,4 +347,7 @@ span{
   #error_text{
     font-size: 15px;
     color: red;
+  }
+  .soon{
+    font-size: 30px;
   }

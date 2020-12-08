@@ -40,7 +40,7 @@ topTenHextris.once('value', function(snapshot){
         scoresAr.forEach(function(val){
           content +='<tr>';
           content += '<td>' + val.UserName + '</td>';
-          content += '<td>' + val.TicketNumber + '</td>';
+          content += '<td>' + mask(val.TicketNumber) + '</td>';
           content += '<td>' + val.Score + '</td>';
           content += '</tr>';
         });
@@ -63,7 +63,7 @@ topTenPacMan.once('value', function(snapshot){
       scoresAr.forEach(function(val){
         content +='<tr>';
         content += '<td>' + val.UserName + '</td>';
-        content += '<td>' + val.TicketNumber + '</td>';
+        content += '<td>' + mask(val.TicketNumber) + '</td>';
         content += '<td>' + val.Score + '</td>';
         content += '</tr>';
       });
@@ -72,6 +72,13 @@ topTenPacMan.once('value', function(snapshot){
 });  
 var topTen2048=this.database.ref("/2048").orderByChild("Score").limitToLast(10);
 
+function mask(input){
+  /*let firstPart=input.slice(0,4);*/
+  let maskChar='*';
+  let maskedPart=maskChar.repeat(4);
+  let maskedInput=maskedPart+input.slice(input.length-4);
+  return maskedInput;
+}
 topTen2048.once('value', function(snapshot){
     console.log("hello")
     if(snapshot.exists()){
@@ -85,7 +92,7 @@ topTen2048.once('value', function(snapshot){
       scoresAr.forEach(function(val){
         content +='<tr>';
         content += '<td>' + val.UserName + '</td>';
-        content += '<td>' + val.TicketNumber + '</td>';
+        content += '<td>' + mask(val.TicketNumber)+ '</td>';
         content += '<td>' + val.Score + '</td>';
         content += '</tr>';
       });
