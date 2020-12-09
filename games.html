@@ -10,6 +10,8 @@
         <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-firestore.js"></script>
         <script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
+        
+      </head>
     <body id="my_body"> 
         <img src="Twiddle_Logo.png" class="logo_image">
         <center>       
@@ -23,9 +25,7 @@
           </div>    
     </nav>
     <br>
-        
-</head>
-<body>
+    <br>
 
 <div class="form-popup" id="myForm">
   <form action="/action_page.php" class="form-container">
@@ -46,60 +46,65 @@
 </div>
         <div>
             <br>
-            <center><div class="row">
-                <div class="column">
-                        <span style="display: inline;align-self:center;">
+            <center>
+              <div class="container">
+                <div class="row row-no-gutters visible-md visible-lg">
+                  <div class="col-sm-4">
                         <img src="hextrisCover.png" class="image" onclick="openForm('hextris')">
-                        </span>
-                        <br>
-                  <p class="game_name">Hextris</p>
-                  <br>
-                  <h4>Leaderboard</h4>
-                  <table class="sortable" id ="LeaderboardH" cellspacing="5" style ="width:75%; align-items:center;">
-                    <thead>
-                    <tr>
-                      <th>Name</th>
-                      <th>Ticket Number</th>
-                      <th>Score</th>
-                    </tr>
-                    </thead>
-                  </table>
                 </div>
-                <div class="column">
-                    <span style="display: inline;">
+                <div class="col-sm-4">
                     <img src="pacmanCover.png" class="image" onclick="openForm('pacman')">
-                    </span>
-                    <br>
-                    <p class="game_name">Pacman</p>
-                    <br>
-                    <h4>Leaderboard</h4>
-                    <table class="sortable" id ="LeaderboardP" cellspacing="5" style ="width:75%">
-                      <thead>
-                      <tr>
-                        <th>Name</th>
-                        <th>Ticket Number</th>
-                        <th>Score</th>
-                      </tr>
-                      </thead>
-                    </table>
                 </div>
-                <div class="column">
-                    <span style="display: inline;">
+                <div class="col-sm-4">
                     <img src="2048Cover.png" class="image" onclick="openForm('2048')">
-                    <br>
-                    <p class="game_name">2048</p>
-                    <br>
-                    <h4>Leaderboard</h4>
-                    <table class="sortable" id ="LeaderboardT" cellspacing="5" style ="width:75%">
-                      <thead>
-                      <tr>
-                        <th>Name</th>
-                        <th>Ticket Number</th>
-                        <th>Score</th>
-                      </tr>
-                      </thead>
-                    </table>
-                </span>
+                    </div>
+                    </div>
+                    <div class="row row-no-gutters">
+                      <div class="col-sm-4">
+                      <p class="game_name">Hextris</p>
+                      <br>
+                      <h4>Leaderboard</h4>
+                      <table class="sortable" id ="LeaderboardH" cellspacing="5" style ="width:75%; align-items:center;">
+                        <thead>
+                        <tr>
+                          <th>Name</th>
+                          <th>Ticket No.</th>
+                          <th>Score</th>
+                        </tr>
+                        </thead>
+                      </table>
+                      <br>
+                    </div>
+                    <div class="col-sm-4">
+                        <p class="game_name">Pacman</p>
+                        <br>
+                        <h4>Leaderboard</h4>
+                        <table class="sortable" id ="LeaderboardP" cellspacing="5" style ="width:75%">
+                          <thead>
+                          <tr>
+                            <th>Name</th>
+                            <th>Ticket No.</th>
+                            <th>Score</th>
+                          </tr>
+                          </thead>
+                        </table>
+                        <br>
+                    </div>
+                    <div class="col-sm-4">
+                        <p class="game_name">2048</p>
+                        <br>
+                        <h4>Leaderboard</h4>
+                        <table class="sortable" id ="LeaderboardT" cellspacing="5" style ="width:75%">
+                          <thead>
+                          <tr>
+                            <th>Name</th>
+                            <th>Ticket No.</th>
+                            <th>Score</th>
+                          </tr>
+                          </thead>
+                        </table>
+                        <br>
+                        </div>
               </div>
     </center>
         </div>  
