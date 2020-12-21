@@ -8,22 +8,33 @@ ______ |  | _____ _/  |________|  |__/_   |______  ______ ____ |  |__
 |__|             \/           \/    \/                \/     \/  
 
 **********************************************************************************/
+.logo_image{
+	left:0;
+	top: 0;
+	height: 50px;
+	padding-top: 5px;
+	padding-right: 20px;
+	padding-left: 20px;
+	background-color: white;
+	position: fixed;
+	z-index: 9999999999999;
+  }
 .topnav {
-    background-color: #333;
-    overflow: hidden;
+    background-color: white;
+    color: #333;
     position: fixed;
     top: 0;
-	width: 100%;
-	font-family: 'Open Sans',sans-serif;
-  }
-  body{
-	  font-family: 'Open Sans',sans-serif;
+    padding-top: 0px;
+    left:11%;
+    width: 85%;
+    height: 55px;
+    z-index: 9999999999999;
   }
   
   /* Style the links inside the navigation bar */
   .topnav a {
+    color: #333;
     float: left;
-    color: #f2f2f2;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
@@ -38,7 +49,7 @@ ______ |  | _____ _/  |________|  |__/_   |______  ______ ____ |  |__
   
   /* Add a color to the active/current link */
   .topnav a.active {
-    background-color: #59597B;
+    background-color:#d60b19;
     color: white;
   }/*
 
@@ -73,14 +84,14 @@ h3 {    font-size: 1.5em; }
 
 html, body {
 	width:100%;
-	font-family: 'Quando', serif;
+	font-family: 'Open Sans', sans-serif;
 	font-size: 14px;
     margin: 0;
     padding: 0;
     min-height: 100%;
     height: 100%;
 	line-height: 23px;
-	background: url('img/bg-pattern-black.png') repeat;
+	background-color: white;
     text-align: center;
 	}
 body {
@@ -93,7 +104,7 @@ div.layout {
     padding: 0;
 }
 
-aside { background-color: rgba(255, 255, 255, 0.1); }
+aside { background-color: white }
 aside > * { margin: 0 15px; padding: 15px 0; }
 
 .wrapper { width: 100%; }
@@ -108,7 +119,7 @@ aside > * { margin: 0 15px; padding: 15px 0; }
 	position: fixed;
 	left: 0;
 	top: 0;
-	font-family: 'Acme', sans-serif;
+	font-family: 'Open Sans', sans-serif;
 	text-transform: uppercase;
 	/*color: rgb(31,52,4);	- dark green */
     color: rgba(0,0,0,0.55);
@@ -119,11 +130,11 @@ aside > * { margin: 0 15px; padding: 15px 0; }
 	}
 
 ::selection {
-	background: rgba(24, 106, 12,0.7); /* Safari */
+	background:rgba(44, 99, 201, 0.7) ; /* Safari */
 	}
 
 ::-moz-selection {
-	background: rgba(24, 106, 12,0.7); /* Firefox */
+	background: rgba(44, 99, 201, 0.7); /* Firefox */
 	}
 	
 /*---------------------------------------------------------------------
@@ -138,7 +149,7 @@ padding: 0;
 margin: 0;
 }
 ul.nav.sub {
-background-color: rgba(0,0,0,0.3);
+background-color: white;
 background/*\**/: url(img/bg/black_30.png)\9;
 display: none;
 }
@@ -157,8 +168,8 @@ ul.nav.sub li{
 padding-left: 2.8em;
 }
 
-ul.nav li:hover { background-color: rgba(255,255,255,0.2); background/*\**/: url(img/bg/white_20.png)\9; *background: url(img/bg/white_20.png); padding-left: 2.5em;}
-ul.nav li.active { background-color: rgba(255,255,255,0.1); background/*\**/: url(img/bg/white_20.png)\9; *background: url(img/bg/white_20.png);}
+ul.nav li:hover { background-color: white; background/*\**/: url(img/bg/white_20.png)\9; *background: url(img/bg/white_20.png); padding-left: 2.5em;}
+ul.nav li.active { background-color: white; background/*\**/: url(img/bg/white_20.png)\9; *background: url(img/bg/white_20.png);}
 
 ul.nav a, ul.nav a:link, ul.nav a:active, ul.nav a:visited, ul.nav a:hover, ul.nav a:focus { color: rgb(31,52,4); text-decoration: none; font-size: 1.5em;}
 
@@ -219,7 +230,7 @@ box-shadow:         2px 2px 5px rgba(50, 50, 50, 0.75);
 	}
 	
 .social{ 
-	font-family: 'Socialico';
+	font-family: 'Open Sans', sans-serif;
 	text-transform: none;
 	font-size: 40px;
 	text-align:center;
@@ -385,7 +396,7 @@ input, select, textarea {
 input[type=button], input[type=submit] { 
 	background: #326a21;
 	text-transform: uppercase;
-	/*font-family: 'Acme',sans-serif;*/
+	font-family: 'Open Sans',sans-serif;
 	border-radius: 15px;
 	color: #fff;
 	border: none;

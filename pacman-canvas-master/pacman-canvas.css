@@ -12,9 +12,9 @@
 /* ---------------- */
 
 body {
-	background-color: #000;
+	background-color: white;
 	color: white;
-	font-family: 'Press Start 2P', cursive;
+	font-family: 'Open Sans', sans-serif;
 }
 
 
@@ -27,7 +27,7 @@ body {
 * { box-shadow: none !important; }
 
 .content, h1, h2, h3, p, div { 
-	font-family: 'Press Start 2P', cursive; 
+	font-family: 'Open Sans', sans-serif; 
 	font-weight: normal;
 	}
 .content[id*=-content]:not(#game-content) {	
