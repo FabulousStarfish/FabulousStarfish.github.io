@@ -8,13 +8,37 @@ var firebaseConfig = {
     appId: "1:653623928823:web:6679c1f971dc5cc59230f2"
   };
   // Initialize Firebase
+
   firebase.initializeApp(firebaseConfig);
 
   this.database = firebase.database();
 
-hextrisRef=this.database.ref('/Hextris');
+  hextrisRef=this.database.ref('/Hextris');
+  
+  ticketNumber=localStorage.getItem('TicketNumber');
+  userName=localStorage.getItem('UserName');
 
-localStorage.setItem("highscores","[0]");
+  firebase.database().ref(`Hextris/${ticketNumber}`).once("value", snapshotHextris => {
+	if (snapshotHextris.exists())
+	{
+	  prevScoreinDB=snapshotHextris.child("Score").val();
+	  //prevScore=555;
+	  highscores[0]=prevScoreinDB;
+	  var prevScoreArray="";
+	  prevScoreArray=prevScoreArray.concat("[",prevScoreinDB,"]");
+	  localStorage.setItem("highscores",prevScoreArray);
+	} 
+	else 
+	{
+	  hextrisRef.child(ticketNumber).set({
+	  TicketNumber: ticketNumber,
+	  UserName: userName,
+	  Score : 0
+	});
+	localStorage.setItem("highscores","[0]");
+	}
+   });
+
 
 
 function scaleCanvas() {
@@ -108,6 +132,7 @@ function hideUIElements() {
 
 function init(b) {
 	if(settings.ending_block && b == 1){return;}
+
 	if (b) {
 		$("#pauseBtn").attr('src',"./images/btn_pause.svg");
 		if ($('#helpScreen').is(":visible")) {
@@ -122,6 +147,15 @@ function init(b) {
 		}, 7000);
 		clearSaveState();
 		checkVisualElements(1);
+	}
+	highscores = [];
+	if (localStorage.getItem('highscores')) {
+		try {
+			highscores = JSON.parse(localStorage.getItem('highscores'));
+			//highscores = highscores.slice(0,3);
+		} catch (e) {
+			highscores = [];
+		}
 	}
 	if (highscores.length == 0 ){
 		$("#currentHighScore").text(0);

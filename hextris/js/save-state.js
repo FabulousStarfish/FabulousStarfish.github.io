@@ -1,7 +1,7 @@
 function exportSaveState() {
 	var state = {};
 
-	if(gameState == 1 || gameState == -1 || (gameState === 0 && localStorage.getItem('saveState') !== undefined)) {
+	if(gameState == 1 || gameState == -1 || (gameState == 0 && localStorage.getItem('saveState') !== undefined)) {
 		state = {
 			hex: $.extend(true, {}, MainHex),
 			blocks: $.extend(true, [], blocks),
@@ -27,7 +27,7 @@ function exportSaveState() {
 		state.blocks.map(descaleBlock);
 	}
 
-	localStorage.setItem('highscores', JSON.stringify(highscores));
+	//localStorage.setItem('highscores', JSON.stringify(highscores));
 
 	return JSONfn.stringify(state);
 }

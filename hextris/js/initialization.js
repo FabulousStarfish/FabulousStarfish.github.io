@@ -1,6 +1,46 @@
 $(document).ready(function() {
 	initialize();
 });
+
+var firebaseConfig = {
+    apiKey: "AIzaSyBweuVUFZjU1u8AnBLKbI5R3SINR9sKlFM",
+    authDomain: "yep-2020.firebaseapp.com",
+    databaseURL: "https://yep-2020.firebaseio.com",
+    projectId: "yep-2020",
+    storageBucket: "yep-2020.appspot.com",
+    messagingSenderId: "653623928823",
+    appId: "1:653623928823:web:6679c1f971dc5cc59230f2"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+
+  this.database = firebase.database();
+
+  hextrisRef=this.database.ref('/Hextris');
+  
+  ticketNumber=localStorage.getItem('TicketNumber');
+  userName=localStorage.getItem('UserName');
+
+  firebase.database().ref(`Hextris/${ticketNumber}`).once("value", snapshotHextris => {
+	if (snapshotHextris.exists())
+	{
+	  prevScoreinDB=snapshotHextris.child("Score").val();
+	  //prevScore=555;
+	  var prevScoreArray="";
+	  prevScoreArray=prevScoreArray.concat("[",prevScoreinDB,"]");
+	  localStorage.setItem("highscores",prevScoreArray);
+	} 
+	else 
+	{
+	  hextrisRef.child(ticketNumber).set({
+	  TicketNumber: ticketNumber,
+	  UserName: userName,
+	  Score : 0
+	});
+	//localStorage.setItem("highscores","[0]");
+	}
+   });
+   
 function initialize(a) {
 	window.rush = 1;
 	window.lastTime = Date.now();

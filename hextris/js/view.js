@@ -147,7 +147,7 @@ function gameOverDisplay() {
 	var c = document.getElementById("canvas");
 	c.className = "blur";
 	updateHighScores();
-	if (highscores.length === 0 ){
+	if (highscores.length == 0 ){
 		$("#currentHighScore").text(0);
 	}
 	else {
