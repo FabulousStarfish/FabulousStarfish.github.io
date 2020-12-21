@@ -12,14 +12,18 @@ var firebaseConfig = {
   console.log(firebaseConfig);
 
   /*function Hello(){
-  firebase.database().ref("/Tickets").child("MGMTST08").update({    
-      TicketNumber: 'MGMTST08',
-      UserName: 'Test_User_8',
+  firebase.database().ref("/Tickets").child("MGMTST15").update({    
+      TicketNumber: 'MGMTST15',
+      UserName: '',
       Status:'Playing'
   });
   console.log("Hello");
 }
 Hello();*/
+
+
+var distance=0;
+
 this.database = firebase.database();
 ticketRef=this.database.ref('/Tickets');
 hextrisRef=this.database.ref('/Hextris');
@@ -99,6 +103,7 @@ topTen2048.once('value', function(snapshot){
       $('#LeaderboardT').append(content);
   }
 });  
+var prevScoreinDB=0;
 
   function login(){
     gameName=localStorage.getItem("gameName");
@@ -112,23 +117,41 @@ topTen2048.once('value', function(snapshot){
       firebase.database().ref(`Tickets/${ticketNumber}/TicketNumber`).once("value", snapshot => {
       if (snapshot.exists()){
          console.log("exists!");
-
          ticketRef.child(ticketNumber).set({
            TicketNumber: ticketNumber,
            UserName: userName,
-           Status:'Playing'
+           Status:'Started'
          });
          console.log("Hello");
+         var endTime = new Date().getTime() + 1200000;
          localStorage.setItem("UserName",userName);
          localStorage.setItem("TicketNumber",ticketNumber);
-         if(gameName=='hextris'){
-           hextrisRef.child(ticketNumber).set({
-             TicketNumber: ticketNumber,
-             UserName: userName,
-             Score:0
-           });
-           window.location="/hextris/index.html";
-         }
+         localStorage.setItem("EndTime",endTime);
+         if(gameName=='hextris')
+         {
+
+
+         firebase.database().ref(`Hextris/${ticketNumber}`).once("value", snapshotHextris => {
+          if (snapshotHextris.exists())
+          {
+            prevScoreinDB=snapshotHextris.child("Score").val();
+            //prevScoreinDB=555;
+            var prevScoreArray="";
+            prevScoreArray=prevScoreArray.concat("[",prevScoreinDB,"]");
+            localStorage.setItem("highscores",prevScoreArray);
+          } 
+          else 
+          {
+            hextrisRef.child(ticketNumber).set({
+            TicketNumber: ticketNumber,
+            UserName: userName,
+            Score : 0
+          });
+          }
+         });
+
+         window.location="/hextris/index.html";
+        }
          else if(gameName=='pacman'){
            pacmanRef.child(ticketNumber).set({
              TicketNumber: ticketNumber,
@@ -154,11 +177,35 @@ topTen2048.once('value', function(snapshot){
 
     }
     }
-function openForm(game) {
-  document.getElementById("myForm").style.display = "block";
-  localStorage.setItem("gameName",game);
-  console.log(game);
+function openForm(game) 
+{
+  distance = endDate - now;
+  ticketNumber=localStorage.getItem('TicketNumber');
+  firebase.database().ref(`Tickets/${ticketNumber}/TicketNumber`).once("value", snapshot => 
+  {
+    if (snapshot.exists() && distance > 0)
+    {      
+      localStorage.setItem("gameName",game);
+
+      if(game=='hextris'){
+        window.location="/hextris/index.html";
+      }
+      else if(game=='pacman'){
+        window.location="/pacman-canvas-master/index.htm";
+      }   
+      else if(game=='2048'){
+        window.location="/2048-master/index.html";
+       }
+    }
+    else
+    {
+      document.getElementById("myForm").style.display = "block";
+      localStorage.setItem("gameName",game);
+    };
+  });
 }
+ 
+var now=0;
 
 function closeForm() {
   document.getElementById("myForm").style.display = "none";
@@ -182,3 +229,32 @@ function closeForm() {
   console.log(gameName);
 
 }*/
+
+// Set the date we're counting down to
+var endDate = localStorage.getItem("EndTime");
+
+// Update the count down every 1 second
+var x = setInterval(function() 
+{
+
+  // Get today's date and time
+  now = new Date().getTime();
+    
+  // Find the distance between now and the count down date
+  distance = endDate - now;
+    
+  // Time calculations for days, hours, minutes and seconds
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+  // Output the result in an element with id="demo"
+  document.getElementById("demo").innerHTML = minutes + "m " + seconds + "s ";
+    
+  // If the count down is over, write some text 
+  if (distance < 0) 
+  {
+    clearInterval(x);
+    document.getElementById("demo").innerHTML = "EXPIRED";
+    localStorage.clear("TicketNumber");
+  }
+}, 1000);
