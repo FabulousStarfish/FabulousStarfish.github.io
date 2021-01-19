@@ -74,7 +74,6 @@ topTenPacMan.once('value', function(snapshot){
   }
 });  
 
-
 var topTen2048=this.database.ref("/TZFE").orderByChild("Score").limitToLast(10);
 
 topTen2048.once('value', function(snapshot){
@@ -90,13 +89,14 @@ topTen2048.once('value', function(snapshot){
       scoresAr.forEach(function(val){
         content +='<tr>';
         content += '<td>' + val.UserName + '</td>';
-        content += '<td>' + mask(val.TicketNumber)+ '</td>';
+        content += '<td>' + mask(val.TicketNumber) + '</td>';
         content += '<td>' + val.Score + '</td>';
         content += '</tr>';
       });
       $('#LeaderboardT').append(content);
   }
 });  
+
 
 function mask(input){
   /*let firstPart=input.slice(0,4);*/
@@ -333,13 +333,13 @@ var x = setInterval(function()
   var seconds = Math.floor((distance % (1000 * 60)) / 1000);
     
   // Output the result in an element with id="demo"
-  document.getElementById("demo").innerHTML = minutes + "m " + seconds + "s ";
+  document.getElementById("timer").innerHTML = minutes + "m " + seconds + "s ";
     
   // If the count down is over, write some text 
   if (distance < 0) 
   {
     clearInterval(x);
-    document.getElementById("demo").innerHTML = "EXPIRED";
+    document.getElementById("timer").innerHTML = "EXPIRED";
     localStorage.clear("TicketNumber");
   }
 }, 1000);
