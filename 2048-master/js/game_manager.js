@@ -12,9 +12,32 @@ firebase.initializeApp(firebaseConfig);
 
 this.database = firebase.database();
 
-twozerofoureightRef=this.database.ref('/2048');
-localStorage.setItem("bestScore","0");
+twozerofoureightRef=this.database.ref('/TZFE');
+  
+ticketNumber=localStorage.getItem('TicketNumber');
+userName=localStorage.getItem('UserName');
 
+var highestScore=0;
+
+//firebase.database().ref(`TZFE/${ticketNumber}`).once("value", snapshot2048 => {
+firebase.database().ref(`TZFE/${ticketNumber}`).once("value", snapshot2048 => {
+	if (snapshot2048.exists())
+	{
+    prevScoreinDB=snapshot2048.child("Score").val();
+	  //prevScoreinDB=555;
+    localStorage.setItem("highestScore",prevScoreinDB);
+    console.log("snapShotsExists");
+	}
+	else 
+	{
+	  twozerofoureightRef.child(ticketNumber).set({
+	  TicketNumber: ticketNumber,
+	  UserName: userName,
+	  Score : 0
+	  });
+	localStorage.setItem("highestScore","0");
+	}
+   });
 
 function GameManager(size, InputManager, Actuator, StorageManager) {
   this.size           = size; // Size of the grid
@@ -102,6 +125,7 @@ GameManager.prototype.actuate = function () {
   // Clear the state when the game is over (game over only, not win)
   if (this.over) {
     this.storageManager.clearGameState();
+
   } else {
     this.storageManager.setGameState(this.serialize());
   }
@@ -202,13 +226,16 @@ GameManager.prototype.move = function (direction) {
 
     if (!this.movesAvailable()) {
       this.over = true; // Game over!
-      var bestScore = localStorage.getItem("bestScore");
-      ticketNumber = localStorage.getItem("TicketNumber");
-			        twozerofoureightRef.child(ticketNumber).update({
-				    Score:bestScore
-			  });
-    }
 
+      var bestScore = localStorage.getItem("bestScore");
+      
+      ticketNumber = localStorage.getItem("TicketNumber");
+      if(bestScore>highestScore){
+        twozerofoureightRef.child(ticketNumber).update({
+          Score:bestScore
+        });
+      }
+    }
     this.actuate();
   }
 };

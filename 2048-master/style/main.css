@@ -41,13 +41,14 @@
 .topnav a.active {
   background-color:#d60b19;
   color: white;
+  font-family: 'OpenSans',sans-serif;
 }
 html, body {
   margin: 0;
   padding: 0;
   background:white;
   color: #776e65;
-  font-family: "Open Sans",sans-serif;
+  font-family: 'Open Sans',sans-serif;
   font-size: 18px; }
 
 body {

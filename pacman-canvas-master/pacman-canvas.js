@@ -45,7 +45,7 @@ function geronimo() {
 	var inky, blinky, clyde, pinky;
 
 	var mapConfig = "data/map.json";
-	localStorage.setItem("pacman_highscores","0");
+	//localStorage.setItem("pacman_highscores",0);
 
 
 	/* AJAX stuff */
@@ -271,7 +271,8 @@ function geronimo() {
 		};
 
 		this.newGame = function () {
-			var r = confirm("Are you sure you want to restart?");
+			//var r = confirm("Are you sure you want to restart?");
+			var r = 1;
 			if (r) {
 				console.log("new Game");
 				this.init(0);
@@ -1224,17 +1225,33 @@ function geronimo() {
 			this.lives--;
 			console.log("pacman died, " + this.lives + " lives left");
 			if (this.lives <= 0) {
-				var input = "<div id='highscore-form'><span id='form-validater'></span><input type='text' id='playerName'/><span class='button' id='score-submit'>save</span></div>";
+				ticketNumber=localStorage.getItem('TicketNumber');
+  				userName=localStorage.getItem('UserName');
+
+				firebase.database().ref(`PacMan/${ticketNumber}`).once("value", snapshotPacman => {
+					if (snapshotPacman.exists())
+					{
+					prevScoreinDB=snapshotPacman.child("Score").val();
+					if(game.score.score>prevScoreinDB)
+					{
+						pacManRef.child(ticketNumber).update({
+							Score : game.score.score})
+					}
+					} 
+					else 
+					{
+					pacManRef.child(ticketNumber).set({
+					TicketNumber: ticketNumber,
+					UserName: userName,
+					Score : game.score.score
+					});
+					}
+				});
+				//var input = "<div id='highscore-form'><span id='form-validater'></span><input type='text' id='playerName'/><span class='button' id='score-submit'>save</span></div>";
+				var input = "<div id='highscore-form'><span class='button' id='newGame'>Play Again</span></div>";
 				game.showMessage("Game over", "Total Score: " + game.score.score + input);
+				//game.showMessage("Game over", "Total Score: " + game.score.score);
 				game.gameOver = true;
-				var previousScore=localStorage.getItem("pacman_highscores");
-				if(game.score.score>previousScore){
-					localStorage.setItem("pacman_highscores",game.score.score);				
-					ticketNumber = localStorage.getItem("TicketNumber");
-			        pacManRef.child(ticketNumber).update({
-				    Score:game.score.score
-			  });
-				}
 				$('#playerName').focus();
 			}
 			game.drawHearts(this.lives);
