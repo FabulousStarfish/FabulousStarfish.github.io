@@ -3,11 +3,7 @@
 /*#img_link:hover{
   background-color: white;
 }*/
-.my_demo{
-  z-index: 9999999999999999999999;
-  top: 0px;
-  right: 0px;
-}
+
 .image {
   display: block;
   width: 100%;
@@ -362,7 +358,7 @@ span{
     top: 0;
     padding-top: 0px;
     left:11%;
-    width: 85%;
+    width: 75%;
     height: 55px;
     z-index: 9999999999999;
   }
@@ -394,6 +390,27 @@ span{
   }
   .soon{
     font-size: 30px;
+  }
+  body::-webkit-scrollbar {
+    width: 0.9em;
+  }
+   
+  body::-webkit-scrollbar-thumb {
+    background-color: #d60b19;
+  }
+  
+
+  #timer{
+    font-size: 17px;
+    padding: 18px;
+    height:55px ;
+    color: white;
+    text-align: center;
+    position:fixed;
+    top: 0;
+    right: 0px;
+    background-color: #d60b19;
+    width: 10%;
   }
 
 
@@ -571,3 +588,53 @@ span{
 .navbar-light .navbar-text a:hover {
   color: black;
 }*/
+
+.about-us .hero-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+.about-us .hero-text h1 {
+  font: normal normal bold 32px/48px Open Sans;
+  color: #535461;
+  margin-bottom: 8px;
+  white-space: nowrap;
+}
+
+.about-us .hero-text h2 {
+  font: normal normal normal 16px/24px Open Sans;
+  color: #535461;
+  margin-bottom: 40px;
+}
+
+.justify-content-end {
+  -ms-flex-pack: end!important;
+  justify-content: flex-end!important;
+}
+
+@media (min-width: 768px){
+  .d-md-flex {
+    display: -ms-flexbox!important;
+    display: flex!important;
+}
+}
+
+.d-none {
+  display: none!important;
+}
+
+.col-6 {
+  -ms-flex: 0 0 50%;
+  flex: 0 0 50%;
+  max-width: 50%;
+}
+
+.col, .col-1, .col-10, .col-11, .col-12, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-auto, .col-lg, .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-auto, .col-md, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-auto, .col-sm, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-auto, .col-xl, .col-xl-1, .col-xl-10, .col-xl-11, .col-xl-12, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-auto {
+  position: relative;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
