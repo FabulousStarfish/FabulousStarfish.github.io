@@ -12,10 +12,8 @@ var firebaseConfig = {
   console.log(firebaseConfig);
 
   /*function Hello(){
-  firebase.database().ref("/Tickets").child("MGMTST15").update({    
-      TicketNumber: 'MGMTST15',
-      UserName: '',
-      Status:'Playing'
+  firebase.database().ref("/").child("TZFE").update({    
+      purpose:"Adding Section"
   });
   console.log("Hello");
 }
@@ -28,7 +26,8 @@ this.database = firebase.database();
 ticketRef=this.database.ref('/Tickets');
 hextrisRef=this.database.ref('/Hextris');
 pacmanRef=this.database.ref('/PacMan');
-twozerofoureightRef=this.database.ref('/2048');
+twozerofoureightRef=this.database.ref('/TZFE');
+
 var topTenHextris=this.database.ref("/Hextris").orderByChild("Score").limitToLast(10);
 
 topTenHextris.once('value', function(snapshot){
@@ -74,15 +73,10 @@ topTenPacMan.once('value', function(snapshot){
       $('#LeaderboardP').append(content);
   }
 });  
-var topTen2048=this.database.ref("/2048").orderByChild("Score").limitToLast(10);
 
-function mask(input){
-  /*let firstPart=input.slice(0,4);*/
-  let maskChar='*';
-  let maskedPart=maskChar.repeat(4);
-  let maskedInput=maskedPart+input.slice(input.length-4);
-  return maskedInput;
-}
+
+var topTen2048=this.database.ref("/TZFE").orderByChild("Score").limitToLast(10);
+
 topTen2048.once('value', function(snapshot){
     console.log("hello")
     if(snapshot.exists()){
@@ -103,6 +97,15 @@ topTen2048.once('value', function(snapshot){
       $('#LeaderboardT').append(content);
   }
 });  
+
+function mask(input){
+  /*let firstPart=input.slice(0,4);*/
+  let maskChar='*';
+  let maskedPart=maskChar.repeat(4);
+  let maskedInput=maskedPart+input.slice(input.length-4);
+  return maskedInput;
+}
+
 var prevScoreinDB=0;
 
   function login(){
@@ -152,20 +155,47 @@ var prevScoreinDB=0;
 
          window.location="/hextris/index.html";
         }
-         else if(gameName=='pacman'){
+        else if(gameName=='pacman')
+        {
+
+
+        firebase.database().ref(`PacMan/${ticketNumber}`).once("value", snapshotPacMan => {
+         if (snapshotPacMan.exists())
+         {
+           var prevScoreinDB=snapshotPacMan.child("Score").val();
+           localStorage.setItem("previousHighScore",prevScoreinDB);
+         } 
+         else 
+         {
            pacmanRef.child(ticketNumber).set({
-             TicketNumber: ticketNumber,
-             UserName: userName,
-             Score:0
+           TicketNumber: ticketNumber,
+           UserName: userName,
+           Score : 0
+         });
+         }
+        });
+
+        window.location="/pacman-canvas-master/index.htm";
+       } 
+         else if(gameName=='2048')
+        {
+
+          firebase.database().ref(`TZFE/${ticketNumber}`).once("value", snapshot2048 => {
+            if (snapshot2048.exists())
+            {
+              prevScoreinDB=snapshot2048.child("Score").val();
+              localStorage.setItem("highestScore",prevScoreinDB);
+            } 
+            else 
+            {
+              twozerofoureightRef.child(ticketNumber).set({
+              TicketNumber: ticketNumber,
+              UserName: userName,
+              Score : 0
+            });
+            }
            });
-           window.location="/pacman-canvas-master/index.htm";
-         }   
-         else if(gameName=='2048'){
-          twozerofoureightRef.child(ticketNumber).set({
-            TicketNumber: ticketNumber,
-            UserName: userName,
-            Score:0
-          });
+
           window.location="/2048-master/index.html";
         }    
          console.log(gameName);
@@ -187,13 +217,68 @@ function openForm(game)
     {      
       localStorage.setItem("gameName",game);
 
-      if(game=='hextris'){
+      if(game=='hextris')
+      {
+        firebase.database().ref(`Hextris/${ticketNumber}`).once("value", snapshotHextris => {
+          if (snapshotHextris.exists())
+          {
+            prevScoreinDB=snapshotHextris.child("Score").val();
+            //prevScoreinDB=555;
+            var prevScoreArray="";
+            prevScoreArray=prevScoreArray.concat("[",prevScoreinDB,"]");
+            localStorage.setItem("highscores",prevScoreArray);
+          } 
+          else 
+          {
+            hextrisRef.child(ticketNumber).set({
+            TicketNumber: ticketNumber,
+            UserName: userName,
+            Score : 0
+          });
+          }
+         });
+
         window.location="/hextris/index.html";
       }
-      else if(game=='pacman'){
+      else if(game=='pacman')
+      {
+        firebase.database().ref(`PacMan/${ticketNumber}`).once("value", snapshotPacMan => {
+
+					if (snapshotPacMan.exists())
+					{
+					  prevScoreinDB=snapshotPacMan.child("Score").val();
+            localStorage.setItem("previousHighScore",prevScoreinDB);
+          } 
+          else 
+          {
+            pacmanRef.child(ticketNumber).set({
+            TicketNumber: ticketNumber,
+            UserName: userName,
+            Score : 0
+          });
+          }
+         });
+
         window.location="/pacman-canvas-master/index.htm";
       }   
-      else if(game=='2048'){
+      else if(game=='2048')
+      {
+        firebase.database().ref(`TZFE/${ticketNumber}`).once("value", snapshot2048 => {
+          if (snapshot2048.exists())
+          {
+            prevScoreinDB=snapshot2048.child("Score").val();
+            localStorage.setItem("highestScore",prevScoreinDB);
+          } 
+          else 
+          {
+            twozerofoureightRef.child(ticketNumber).set({
+            TicketNumber: ticketNumber,
+            UserName: userName,
+            Score : 0
+          });
+          }
+         });
+
         window.location="/2048-master/index.html";
        }
     }
