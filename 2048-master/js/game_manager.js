@@ -23,6 +23,7 @@ var highestScore=0;
 firebase.database().ref(`TZFE/${ticketNumber}`).once("value", snapshot2048 => {
 	if (snapshot2048.exists())
 	{
+    var prevScoreinDB = 0;
     prevScoreinDB=snapshot2048.child("Score").val();
 	  //prevScoreinDB=555;
     localStorage.setItem("highestScore",prevScoreinDB);
@@ -35,7 +36,7 @@ firebase.database().ref(`TZFE/${ticketNumber}`).once("value", snapshot2048 => {
 	  UserName: userName,
 	  Score : 0
 	  });
-	localStorage.setItem("highestScore","0");
+	localStorage.setItem("highestScore",0);
 	}
    });
 
@@ -125,6 +126,29 @@ GameManager.prototype.actuate = function () {
   // Clear the state when the game is over (game over only, not win)
   if (this.over) {
     this.storageManager.clearGameState();
+
+    var bestScore = 0;
+    bestScore = localStorage.getItem('bestScore');      
+    ticketNumber = localStorage.getItem("TicketNumber");
+    
+    firebase.database().ref(`TZFE/${ticketNumber}`).once("value", snapshotTZFE => {
+      if (snapshotTZFE.exists())
+      {
+        var prevScoreinDB = 0;
+        prevScoreinDB=snapshotTZFE.child("Score").val();
+        //prevScoreinDB=555;
+        localStorage.setItem("highestScore",prevScoreinDB);
+        console.log("snapShotsExists");
+      }
+       });
+
+       highestScore=localStorage.getItem("highestScore");
+
+    if(this.score>highestScore){
+      twozerofoureightRef.child(ticketNumber).update({
+        Score: this.score
+      });
+    }
 
   } else {
     this.storageManager.setGameState(this.serialize());
@@ -227,14 +251,6 @@ GameManager.prototype.move = function (direction) {
     if (!this.movesAvailable()) {
       this.over = true; // Game over!
 
-      var bestScore = localStorage.getItem("bestScore");
-      
-      ticketNumber = localStorage.getItem("TicketNumber");
-      if(bestScore>highestScore){
-        twozerofoureightRef.child(ticketNumber).update({
-          Score:bestScore
-        });
-      }
     }
     this.actuate();
   }
