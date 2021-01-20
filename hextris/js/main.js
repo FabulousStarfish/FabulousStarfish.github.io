@@ -470,6 +470,8 @@ var x = setInterval(function()
     clearInterval(x);
     document.getElementById("timer").innerHTML = "EXPIRED";
     localStorage.clear("TicketNumber");
-    localStorage.clear("UserName");
+	localStorage.clear("UserName");
+	window.alert("Oops....your ticket code has expired");
+    window.location="/games.html";
   }
 }, 1000);
