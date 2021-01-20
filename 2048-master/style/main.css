@@ -1,3 +1,16 @@
+#timer{
+  font-size: 17px !important;
+  padding: 18px !important;
+  height:22.5px !important;
+  color: white !important;
+  text-align: center !important;
+  position:fixed !important;
+  top: 0;
+  right: 0px;
+  background-color: #d60b19 !important;
+  width: 9%!important;
+}
+
 .logo_image{
   left:0;
   top: 0;
@@ -10,12 +23,13 @@
   z-index: 9999999999999;
 }
 .topnav {
+  font-weight: normal;
   background-color: white;
   color: #333;
   position: fixed;
   top: 0;
   left:12%;
-  width: 88%;
+  width: 75%;
   height: 60px;
   z-index: 99999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999;
 
@@ -23,6 +37,7 @@
 
 /* Style the links inside the navigation bar */
 .topnav a {
+  font-weight: normal;
   color: #333;
   float: left;
   text-align: center;
@@ -33,17 +48,20 @@
 
 /* Change the color of links on hover */
 .topnav a:hover {
+  font-weight: normal;
   background-color: #ddd;
   color: black;
 }
 
 /* Add a color to the active/current link */
 .topnav a.active {
+  font-weight: normal;
   background-color:#d60b19;
   color: white;
   font-family: 'OpenSans',sans-serif;
 }
 html, body {
+  font-weight: normal;
   margin: 0;
   padding: 0;
   background:white;
