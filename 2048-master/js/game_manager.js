@@ -363,7 +363,7 @@ var x = setInterval(function()
     document.getElementById("timer").innerHTML = "EXPIRED";
     localStorage.clear("TicketNumber");
     localStorage.clear("UserName");
-    window.alert("Time Over");
+    window.alert("Oops....your ticket code has expired");
     window.location="/games.html";
   }
 }, 1000);
