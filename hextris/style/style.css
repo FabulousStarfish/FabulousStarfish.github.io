@@ -12,7 +12,7 @@
     position: fixed;
     top: 0;
     left:12%;
-    width: 88%;
+    width: 75%;
     height: 60px;
 
   }
@@ -550,3 +550,16 @@ body {
 	-moz-transform:translate(-50%, 0%);
 	-ms-transform:translate(-50%, 0%);
 }
+
+#timer{
+    font-size: 17px !important;
+    padding: 18px !important;
+    height:55px !important;
+    color: white !important;
+    text-align: center !important;
+    position:fixed !important;
+    top: 0;
+    right: 0px;
+    background-color: #d60b19 !important;
+    width: 9%!important;
+  }
