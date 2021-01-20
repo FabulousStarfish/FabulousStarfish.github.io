@@ -126,7 +126,7 @@ var prevScoreinDB=0;
            Status:'Started'
          });
          console.log("Hello");
-         var endTime = new Date().getTime() + 12000;
+         var endTime = new Date().getTime() + 60000;
          localStorage.setItem("UserName",userName);
          localStorage.setItem("TicketNumber",ticketNumber);
          localStorage.setItem("EndTime",endTime);
@@ -341,6 +341,11 @@ var x = setInterval(function()
   {
     clearInterval(x);
     document.getElementById("timer").innerHTML = "EXPIRED";
+    localTicketNumber=localStorage.getItem("TicketNumber");
+    
+    ticketRef.child(localTicketNumber).update({
+      Status:'Expired'
+    });
     localStorage.clear("TicketNumber");
     localStorage.clear("UserName");
   }
