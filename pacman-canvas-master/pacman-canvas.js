@@ -24,6 +24,7 @@ var firebaseConfig = {
   this.database = firebase.database();
 
 pacManRef=this.database.ref('/PacMan');
+ticketRef=this.database.ref('/Tickets');
 
 
 "use strict";
@@ -1645,8 +1646,15 @@ var x = setInterval(function()
   if (distance < 0) 
   {
     clearInterval(x);
-    document.getElementById("timer").innerHTML = "EXPIRED";
+	document.getElementById("timer").innerHTML = "EXPIRED";
+	localTicketNumber=localStorage.getItem("TicketNumber");
+
+    ticketRef.child(localTicketNumber).update({
+      Status:'Expired'
+    });
     localStorage.clear("TicketNumber");
-    localStorage.clear("UserName");
+	localStorage.clear("UserName");
+	window.alert("Oops....your ticket code has expired");
+    window.location="/games.html";
   }
 }, 1000);
