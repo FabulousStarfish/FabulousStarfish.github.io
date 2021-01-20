@@ -8,6 +8,24 @@ ______ |  | _____ _/  |________|  |__/_   |______  ______ ____ |  |__
 |__|             \/           \/    \/                \/     \/  
 
 **********************************************************************************/
+
+#timer{
+	position: absolute;
+    font-size: 17px !important;
+	padding-top: 20px !important;
+	padding-bottom: 0px;
+	height:55px;
+    color: white !important;
+	text-align: center !important;
+	vertical-align: middle !important;
+    position:fixed !important;
+    top: 0;
+    right: 0px;
+    background-color: #d60b19 !important;
+    width: 9%!important;
+	z-index: 999999999999999;
+	margin-top: 0px;
+  }
 .logo_image{
 	left:0;
 	top: 0;
@@ -26,7 +44,7 @@ ______ |  | _____ _/  |________|  |__/_   |______  ______ ____ |  |__
     top: 0;
     padding-top: 0px;
     left:11%;
-    width: 85%;
+    width: 75%;
     height: 55px;
     z-index: 9999999999999;
   }
