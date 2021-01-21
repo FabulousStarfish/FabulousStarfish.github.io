@@ -131,7 +131,8 @@ var prevScoreinDB=0;
     else{
       firebase.database().ref(`Tickets/${ticketNumber}/TicketNumber`).once("value", snapshot => {
       if (snapshot.exists()){
-        if(snapshot.child("Status").val()!='Expired'){
+        firebase.database().ref(`Tickets/${ticketNumber}`).once("value",snapshotTickets =>{
+       if(snapshotTickets.child("Status").val()!='Expired'){        
          console.log("exists!");
          ticketRef.child(ticketNumber).set({
            TicketNumber: ticketNumber,
@@ -139,7 +140,7 @@ var prevScoreinDB=0;
            Status:'Started'
          });
          console.log("Hello");
-         var endTime = new Date().getTime() + 60000;
+         var endTime = new Date().getTime() + 1200000;
          localStorage.setItem("UserName",userName);
          localStorage.setItem("TicketNumber",ticketNumber);
          localStorage.setItem("EndTime",endTime);
@@ -216,7 +217,7 @@ var prevScoreinDB=0;
         }
         else{
           document.getElementById("error_text").innerHTML="Expired Ticket";
-        }
+        }});
       }
       else{
         document.getElementById("error_text").innerHTML="Invalid Ticket";
