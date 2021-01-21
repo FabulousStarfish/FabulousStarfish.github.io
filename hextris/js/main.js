@@ -12,6 +12,7 @@ var firebaseConfig = {
   firebase.initializeApp(firebaseConfig);
 
   this.database = firebase.database();
+  ticketRef=this.database.ref('/Tickets');
 
   hextrisRef=this.database.ref('/Hextris');
   
@@ -468,7 +469,11 @@ var x = setInterval(function()
   if (distance < 0) 
   {
     clearInterval(x);
-    document.getElementById("timer").innerHTML = "EXPIRED";
+	document.getElementById("timer").innerHTML = "EXPIRED";
+	localTicketNumber=localStorage.getItem("TicketNumber");
+    ticketRef.child(localTicketNumber).update({
+      Status:'Expired'
+    });
     localStorage.clear("TicketNumber");
 	localStorage.clear("UserName");
 	window.alert("Oops....your ticket code has expired");
