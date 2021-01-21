@@ -19,6 +19,18 @@ var firebaseConfig = {
 }
 Hello();*/
 
+function showElements(){
+  if(localStorage.getItem("TicketNumber")===null){    
+    document.getElementById("logout").style.visibility = "hidden";
+    document.getElementById("timer").style.visibility = "hidden";    
+  }
+  else{    
+    document.getElementById("logout").style.visibility = "visible";
+    document.getElementById("timer").style.visibility = "visible";
+  }
+}
+showElements();
+
 
 var distance=0;
 
@@ -119,6 +131,7 @@ var prevScoreinDB=0;
     else{
       firebase.database().ref(`Tickets/${ticketNumber}/TicketNumber`).once("value", snapshot => {
       if (snapshot.exists()){
+        if(snapshot.child("Status").val()!='Expired'){
          console.log("exists!");
          ticketRef.child(ticketNumber).set({
            TicketNumber: ticketNumber,
@@ -200,9 +213,13 @@ var prevScoreinDB=0;
           window.location="/2048-master/index.html";
         }    
          console.log(gameName);
+        }
+        else{
+          document.getElementById("error_text").innerHTML="Expired Ticket";
+        }
       }
       else{
-        document.getElementById("error_text").innerHTML="Invalid Ticket"
+        document.getElementById("error_text").innerHTML="Invalid Ticket";
       }
    });
 
@@ -357,4 +374,5 @@ function logout(){
   localStorage.clear("TicketNumber");
   localStorage.clear("UserName");
   document.getElementById("logout").style.visibility = "hidden";
+  document.getElementById("timer").style.visibility = "hidden";
 }

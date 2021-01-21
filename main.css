@@ -399,6 +399,19 @@ span{
     background-color: #d60b19;
   }
   
+  #logout{
+    z-index: 9999999999999;
+    font-size: 17px;
+    padding: 18px;
+    height:55px ;
+    color: black;
+    text-align: center;
+    position:fixed;
+    top: 0;
+    right: 150;
+    width: 5%;   
+    visibility: hidden;
+  }
 
   #timer{
     font-size: 17px;
@@ -410,7 +423,8 @@ span{
     top: 0;
     right: 0px;
     background-color: #d60b19;
-    width: 10%;
+    width: 9%;
+    visibility: hidden;
   }
 
 
