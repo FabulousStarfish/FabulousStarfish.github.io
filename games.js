@@ -11,13 +11,21 @@ var firebaseConfig = {
   firebase.initializeApp(firebaseConfig);
   console.log(firebaseConfig);
 
-  /*function Hello(){
-  firebase.database().ref("/").child("TZFE").update({    
-      purpose:"Adding Section"
+  /*function create(){
+  firebase.database().ref("/Tickets").child("MGMTST23").update({    
+      Status:'New',
+      TicketNumber:'MGMTST23'
   });
-  console.log("Hello");
+  console.log("created");
 }
-Hello();*/
+create();*/
+/*window.onbeforeunload = function () {
+  localTicketNumber=localStorage.getItem("TicketNumber");
+    
+    ticketRef.child(localTicketNumber).update({
+      RemainingTime:distance
+    });
+};*/
 
 function showElements(){
   if(localStorage.getItem("TicketNumber")===null){    
@@ -132,18 +140,31 @@ var prevScoreinDB=0;
       firebase.database().ref(`Tickets/${ticketNumber}/TicketNumber`).once("value", snapshot => {
       if (snapshot.exists()){
         firebase.database().ref(`Tickets/${ticketNumber}`).once("value",snapshotTickets =>{
-       if(snapshotTickets.child("Status").val()!='Expired'){        
+          var user_status=snapshotTickets.child("Status").val();
+       if(user_status!='Expired'){  
+         if(user_status=='New'){   
          console.log("exists!");
          ticketRef.child(ticketNumber).set({
            TicketNumber: ticketNumber,
            UserName: userName,
-           Status:'Started'
+           Status:'Started',
+           RemainingTime:1200000
          });
          console.log("Hello");
          var endTime = new Date().getTime() + 1200000;
          localStorage.setItem("UserName",userName);
          localStorage.setItem("TicketNumber",ticketNumber);
          localStorage.setItem("EndTime",endTime);
+        }
+        else if(user_status='Started'){
+          userName=snapshotTickets.child("UserName").val();
+          var remaining_time=snapshotTickets.child("RemainingTime").val();
+          console.log("Hello");
+          var endTime = new Date().getTime() + remaining_time;
+          localStorage.setItem("UserName",userName);
+          localStorage.setItem("TicketNumber",ticketNumber);
+          localStorage.setItem("EndTime",endTime);
+        }
          document.getElementById("logout").style.visibility = "visible";
          if(gameName=='hextris')
          {
@@ -362,7 +383,8 @@ var x = setInterval(function()
     localTicketNumber=localStorage.getItem("TicketNumber");
     
     ticketRef.child(localTicketNumber).update({
-      Status:'Expired'
+      Status:'Expired',
+      RemainingTime:0
     });
     localStorage.clear("TicketNumber");
     localStorage.clear("UserName");
@@ -372,6 +394,11 @@ var x = setInterval(function()
 
 
 function logout(){
+  localTicketNumber=localStorage.getItem("TicketNumber");
+    
+    ticketRef.child(localTicketNumber).update({
+      RemainingTime:distance
+    });
   localStorage.clear("TicketNumber");
   localStorage.clear("UserName");
   document.getElementById("logout").style.visibility = "hidden";
