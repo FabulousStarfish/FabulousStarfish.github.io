@@ -472,7 +472,8 @@ var x = setInterval(function()
 	document.getElementById("timer").innerHTML = "EXPIRED";
 	localTicketNumber=localStorage.getItem("TicketNumber");
     ticketRef.child(localTicketNumber).update({
-      Status:'Expired'
+	  Status:'Expired',
+	  RemainingTime:0
     });
     localStorage.clear("TicketNumber");
 	localStorage.clear("UserName");
