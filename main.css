@@ -412,6 +412,9 @@ span{
     width: 5%;   
     visibility: hidden;
   }
+  #logout:hover{
+    cursor: pointer;
+    }
 
   #timer{
     font-size: 17px;
@@ -650,5 +653,10 @@ span{
   width: 100%;
   padding-right: 15px;
   padding-left: 15px;
+}
+
+.image:hover{
+  box-shadow: 5px 17px 20px rgb(199, 115, 115);
+  cursor: pointer;
 }
 
