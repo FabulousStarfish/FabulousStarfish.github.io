@@ -43,6 +43,11 @@
   padding: 7px 2% 7px 5%;
   text-align: left;
 }
+.last_question{
+  width: 100%;  
+  padding: 7px 2% 7px 5%;
+  text-align: left;
+}
 #Question_8{
   border-bottom:0px;
   border: none;
@@ -400,7 +405,7 @@ span{
   }
   
   #logout{
-    z-index: 9999999999999;
+    z-index: 999999999999999;
     font-size: 17px;
     padding: 18px;
     height:55px ;
@@ -408,12 +413,13 @@ span{
     text-align: center;
     position:fixed;
     top: 0;
-    right: 150;
+    right: 120;
     width: 5%;   
     visibility: hidden;
   }
   #logout:hover{
     cursor: pointer;
+    color: #d60b19;
     }
 
   #timer{
@@ -426,7 +432,7 @@ span{
     top: 0;
     right: 0px;
     background-color: #d60b19;
-    width: 9%;
+    width: 7%;
     visibility: hidden;
   }
 
@@ -656,7 +662,46 @@ span{
 }
 
 .image:hover{
+  width: 251px;
+  height: 401px;
   box-shadow: 5px 17px 20px rgb(199, 115, 115);
   cursor: pointer;
 }
+.score_column{
+  text-align: right;
+  padding-right: 5px;
+  width: 25%;
+}
+.name_column{
+  padding-left: 5px;  
+  width: 40%;
+}
+.name_table{
+  padding-left: 5px;
+  width: 40%;
+}
+.score_table{
+  text-align: right;
+  padding-right: 5px ;
+  width: 25%;
+}
+.ticket_table{
+  width: 35%;
+}
+.name_footer{
+  padding-left: 5px;  
+  width: 40%;
+  background-color: #f1b9bd;  
+}
+.ticket_footer{
+  width: 35%; 
+  background-color: #f1b9bd;  
+}
+.score_footer{
+  text-align: right;
+  padding-right: 5px ;
+  width: 25%;
+  background-color: #f1b9bd;     
+}
+
 

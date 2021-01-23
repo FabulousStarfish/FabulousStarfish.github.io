@@ -11,14 +11,14 @@ var firebaseConfig = {
   firebase.initializeApp(firebaseConfig);
   console.log(firebaseConfig);
 
-  /*function create(){
-  firebase.database().ref("/Tickets").child("MGMTST23").update({    
+/* function create(){
+  firebase.database().ref("/Tickets").child("MGMTST34").update({    
       Status:'New',
-      TicketNumber:'MGMTST23'
+      TicketNumber:'MGMTST34'
   });
   console.log("created");
 }
-create();*/
+create(); */
 /*window.onbeforeunload = function () {
   localTicketNumber=localStorage.getItem("TicketNumber");
     
@@ -62,14 +62,33 @@ topTenHextris.once('value', function(snapshot){
         scoresAr=scoresAr.reverse();
         scoresAr.forEach(function(val){
           content +='<tr>';
-          content += '<td>' + val.UserName + '</td>';
+          content += '<td class="name_column">' + val.UserName + '</td>';
           content += '<td>' + mask(val.TicketNumber) + '</td>';
-          content += '<td>' + val.Score + '</td>';
+          content += '<td class="score_column">' + val.Score + '</td>';
           content += '</tr>';
         });
         $('#LeaderboardH').append(content);
     }
 });
+
+if(localStorage.getItem("TicketNumber")!=null){
+  ticketNumber= localStorage.getItem("TicketNumber");
+  firebase.database().ref(`Hextris/${ticketNumber}`).once("value",snapshotHUser =>{
+    if(snapshotHUser.exists()){
+      var name_footer=snapshotHUser.child("UserName").val();
+      var score_footer=snapshotHUser.child("Score").val();
+      var content = '';
+      content +='<tfoot>';
+      content += '<td class="name_footer">' + name_footer + '</td>';
+      content += '<td class="ticket_footer">' + ticketNumber + '</td>';
+      content += '<td class="score_footer">' + score_footer + '</td>';
+      content += '</tfoot>';
+
+    }
+    $('#LeaderboardH').append(content);
+  });
+    
+}
 
 var topTenPacMan=this.database.ref("/PacMan").orderByChild("Score").limitToLast(10);
 
@@ -85,14 +104,33 @@ topTenPacMan.once('value', function(snapshot){
       scoresAr=scoresAr.reverse();
       scoresAr.forEach(function(val){
         content +='<tr>';
-        content += '<td>' + val.UserName + '</td>';
+        content += '<td class="name_column">' + val.UserName + '</td>';
         content += '<td>' + mask(val.TicketNumber) + '</td>';
-        content += '<td>' + val.Score + '</td>';
+        content += '<td class="score_column">' + val.Score + '</td>';
         content += '</tr>';
       });
       $('#LeaderboardP').append(content);
   }
 });  
+
+if(localStorage.getItem("TicketNumber")!=null){
+  ticketNumber= localStorage.getItem("TicketNumber");
+  firebase.database().ref(`PacMan/${ticketNumber}`).once("value",snapshotPUser =>{
+    if(snapshotPUser.exists()){
+      var name_footer=snapshotPUser.child("UserName").val();
+      var score_footer=snapshotPUser.child("Score").val();
+      var content = '';
+      content +='<tfoot>';
+      content += '<td class="name_footer">' + name_footer + '</td>';
+      content += '<td class="ticket_footer" >' + ticketNumber + '</td>';
+      content += '<td class="score_footer">' + score_footer + '</td>';
+      content += '</tfoot>';
+
+    }
+    $('#LeaderboardP').append(content);
+  });
+    
+}
 
 var topTen2048=this.database.ref("/TZFE").orderByChild("Score").limitToLast(10);
 
@@ -108,15 +146,33 @@ topTen2048.once('value', function(snapshot){
       scoresAr=scoresAr.reverse();
       scoresAr.forEach(function(val){
         content +='<tr>';
-        content += '<td>' + val.UserName + '</td>';
+        content += '<td class="name_column">' + val.UserName + '</td>';
         content += '<td>' + mask(val.TicketNumber) + '</td>';
-        content += '<td>' + val.Score + '</td>';
+        content += '<td class="score_column">' + val.Score + '</td>';
         content += '</tr>';
       });
       $('#LeaderboardT').append(content);
   }
 });  
 
+if(localStorage.getItem("TicketNumber")!=null){
+  ticketNumber= localStorage.getItem("TicketNumber");
+  firebase.database().ref(`TZFE/${ticketNumber}`).once("value",snapshotTUser =>{
+    if(snapshotTUser.exists()){
+      var name_footer=snapshotTUser.child("UserName").val();
+      var score_footer=snapshotTUser.child("Score").val();
+      var content = '';
+      content +='<tfoot>';
+      content += '<td class="name_footer">' + name_footer + '</td>';
+      content += '<td class="ticket_footer">' + ticketNumber + '</td>';
+      content += '<td class="score_footer">' + score_footer + '</td>';
+      content += '</tfoot>';
+
+    }
+    $('#LeaderboardT').append(content);
+  });
+    
+}
 
 function mask(input){
   /*let firstPart=input.slice(0,4);*/
