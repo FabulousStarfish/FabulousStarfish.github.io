@@ -26,6 +26,25 @@ var firebaseConfig = {
 pacManRef=this.database.ref('/PacMan');
 ticketRef=this.database.ref('/Tickets');
 
+ticketNumber=localStorage.getItem('TicketNumber');
+userName=localStorage.getItem('UserName');
+
+firebase.database().ref(`PacMan/${ticketNumber}`).once("value", snapshotPacman => {
+  if (snapshotPacman.exists())
+  {
+	prevScoreinDB=snapshotPacman.child("Score").val();
+	//prevScore=555;
+  } 
+  else 
+  {
+	pacManRef.child(ticketNumber).set({
+	TicketNumber: ticketNumber,
+	UserName: userName,
+	Score : 0
+  });
+  }
+ });
+
 
 "use strict";
 
