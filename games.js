@@ -308,7 +308,15 @@ var prevScoreinDB=0;
          console.log(gameName);
         }
         else{
-          document.getElementById("error_text").innerHTML="Expired Ticket";
+          // document.getElementById("error_text").innerHTML="Expired Ticket";
+          userName=snapshotTickets.child("UserName").val();
+          var remaining_time=snapshotTickets.child("RemainingTime").val();
+          var endTime = new Date().getTime() + remaining_time;
+          localStorage.setItem("UserName",userName);
+          localStorage.setItem("TicketNumber",ticketNumber);
+          localStorage.setItem("EndTime",endTime);
+          document.getElementById("logout").style.visibility = "visible";
+          window.location="/games.html";
         }});
       }
       else{
@@ -325,7 +333,7 @@ function openForm(game)
   firebase.database().ref(`Tickets/${ticketNumber}/TicketNumber`).once("value", snapshot => 
   {
     if (snapshot.exists() && distance > 0)
-    {      
+     {      
       localStorage.setItem("gameName",game);
 
       if(game=='hextris')
@@ -393,6 +401,13 @@ function openForm(game)
         window.location="/2048-master/index.html";
        }
     }
+    else if (snapshot.exists() && distance <= 0)
+    {
+      document.getElementById("myForm").style.display = "none";
+      window.alert("Your ticket code has expired");
+//      window.location="/games.html";
+//      localStorage.setItem("gameName",game);
+    }
     else
     {
       document.getElementById("myForm").style.display = "block";
@@ -457,8 +472,8 @@ var x = setInterval(function()
       Status:'Expired',
       RemainingTime:0
     });
-    localStorage.clear("TicketNumber");
-    localStorage.clear("UserName");
+    /*localStorage.clear("TicketNumber");
+    localStorage.clear("UserName");*/
   }
 }, 1000);
 
@@ -474,4 +489,5 @@ function logout(){
   localStorage.clear("UserName");
   document.getElementById("logout").style.visibility = "hidden";
   document.getElementById("timer").style.visibility = "hidden";
+  window.location="/index.html";
 }
