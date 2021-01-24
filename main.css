@@ -413,7 +413,7 @@ span{
     text-align: center;
     position:fixed;
     top: 0;
-    right: 120;
+    right: 125;
     width: 5%;   
     visibility: hidden;
   }
@@ -432,7 +432,7 @@ span{
     top: 0;
     right: 0px;
     background-color: #d60b19;
-    width: 7%;
+    width: 8%;
     visibility: hidden;
   }
 

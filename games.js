@@ -11,10 +11,10 @@ var firebaseConfig = {
   firebase.initializeApp(firebaseConfig);
   console.log(firebaseConfig);
 
-/* function create(){
-  firebase.database().ref("/Tickets").child("MGMTST34").update({    
+ /*function create(){
+  firebase.database().ref("/Tickets").child("MGMTST51").update({    
       Status:'New',
-      TicketNumber:'MGMTST34'
+      TicketNumber:'MGMTST51'
   });
   console.log("created");
 }
@@ -204,10 +204,25 @@ var prevScoreinDB=0;
            TicketNumber: ticketNumber,
            UserName: userName,
            Status:'Started',
-           RemainingTime:1200000
+           RemainingTime:900000
          });
+         hextrisRef.child(ticketNumber).set({
+          TicketNumber: ticketNumber,
+          UserName: userName,
+          Score : 0
+        });
+        pacmanRef.child(ticketNumber).set({
+          TicketNumber: ticketNumber,
+          UserName: userName,
+          Score : 0
+        });
+        twozerofoureightRef.child(ticketNumber).set({
+          TicketNumber: ticketNumber,
+          UserName: userName,
+          Score : 0
+        });
          console.log("Hello");
-         var endTime = new Date().getTime() + 1200000;
+         var endTime = new Date().getTime() + 900000;
          localStorage.setItem("UserName",userName);
          localStorage.setItem("TicketNumber",ticketNumber);
          localStorage.setItem("EndTime",endTime);
