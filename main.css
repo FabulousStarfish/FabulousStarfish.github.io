@@ -692,16 +692,19 @@ span{
   padding-left: 5px;  
   width: 40%;
   background-color: #f1b9bd;  
+  border-top: solid 2px #d60b19;
 }
 .ticket_footer{
   width: 35%; 
-  background-color: #f1b9bd;  
+  background-color: #f1b9bd; 
+  border-top: solid 2px #d60b19; 
 }
 .score_footer{
   text-align: right;
   padding-right: 5px ;
   width: 25%;
-  background-color: #f1b9bd;     
+  background-color: #f1b9bd;
+  border-top: solid 2px #d60b19;     
 }
 
 
