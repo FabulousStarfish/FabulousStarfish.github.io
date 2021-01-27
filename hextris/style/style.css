@@ -1,20 +1,34 @@
 
 
 .logo_image{
-	height: 50px;
-	padding: 0px;
+	/*height: 50px;*/
+	width: 180px;
 	margin: 0px;
 	vertical-align: 0px;
+	padding-right: 20px;
+	padding-left: 20px;
+	padding-top: 5px;
   }
+  /*.logo_image{
+	left:0;
+	top: 0;
+	/*height: 50px;
+	width: 180px;
+	padding-top: 5px;
+	padding-right: 20px;
+	padding-left: 20px;
+	background-color: white;
+	position: fixed;
+	z-index: 9999999999999;
+  }*/
 .topnav {
     background-color: white;
     color: #333;
     position: fixed;
     top: 0;
-    left:12%;
+    left:170px;
     width: 75%;
-    height: 60px;
-
+	height: 60px;
   }
   
   /* Style the links inside the navigation bar */
