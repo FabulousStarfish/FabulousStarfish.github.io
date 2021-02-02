@@ -1672,8 +1672,8 @@ var x = setInterval(function()
 	  Status:'Expired',
 	  RemainingTime:0
     });
-    localStorage.clear("TicketNumber");
-	localStorage.clear("UserName");
+    //localStorage.clear("TicketNumber");
+	//localStorage.clear("UserName");
 	window.alert("Oops....your ticket code has expired");
     window.location="/games.html";
   }
