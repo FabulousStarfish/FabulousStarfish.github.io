@@ -126,16 +126,15 @@ button:focus {
 
 #openSideBar {
 	position:fixed;
-	margin-top:6px;
-	width:72px;
-	height:72px;
+	margin-top:65px;
+	width:45px;
+	height:45px;
 	margin-left:11px;
-	z-index:3003;
+	z-index: 3003;
 	color:#232323;
 	cursor:pointer;
-	top:20;
-	right:0;
-
+	left:0;
+	top: 0;
 }
 
 
@@ -284,10 +283,6 @@ button:focus {
 	#instructions_head {
 		padding-left:0%;
 	}
-	#openSideBar{
-		width:60px;
-		height:60px;
-	}
 	#pauseBtn {
 		width:60px;
 		height:60px;
@@ -312,7 +307,7 @@ button:focus {
 }
 
 .helpText {
-	z-index:3001;
+	z-index:3003;
 }
 
 .centeredHeader {
