@@ -186,7 +186,7 @@ var prevScoreinDB=0;
 
   function login(){
     gameName=localStorage.getItem("gameName");
-    ticketNumber=document.getElementById("ticketNumber").value;  
+    ticketNumber=document.getElementById("ticketNumber").value.toUpperCase();  
     userName=document.getElementById("userName").value; 
     
     if(userName==""){      
@@ -490,4 +490,79 @@ function logout(){
   document.getElementById("logout").style.visibility = "hidden";
   document.getElementById("timer").style.visibility = "hidden";
   window.location="/index.html";
+}
+
+var modalH = document.getElementById("myModalH");
+
+// Get the button that opens the modal
+var btnH = document.getElementById("myBtnH");
+
+// Get the <span> element that closes the modal
+var spanH = document.getElementsByClassName("closeH")[0];
+
+// When the user clicks the button, open the modal 
+btnH.onclick = function() {
+  modalH.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+spanH.onclick = function() {
+  modalH.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modalH) {
+    modalH.style.display = "none";
+  }
+}
+
+var modalP = document.getElementById("myModalP");
+
+// Get the button that opens the modal
+var btnP = document.getElementById("myBtnP");
+
+// Get the <span> element that closes the modal
+var spanP = document.getElementsByClassName("closeP")[0];
+
+// When the user clicks the button, open the modal 
+btnP.onclick = function() {
+  modalP.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+spanP.onclick = function() {
+  modalP.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modalP) {
+    modalP.style.display = "none";
+  }
+}
+
+var modal = document.getElementById("myModalT");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtnT");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("closeT")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
 }
