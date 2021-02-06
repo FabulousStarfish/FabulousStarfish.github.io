@@ -149,6 +149,7 @@ GameManager.prototype.actuate = function () {
       twozerofoureightRef.child(ticketNumber).update({
         Score: this.score
       });
+      localStorage.setItem("highestScore",this.score);
     }
 
   } else {
@@ -162,6 +163,7 @@ GameManager.prototype.actuate = function () {
     bestScore:  this.storageManager.getBestScore(),
     terminated: this.isGameTerminated()
   });
+  localStorage.setItem("Current2048Score",this.score);    
 
 };
 
@@ -363,6 +365,15 @@ var x = setInterval(function()
     clearInterval(x);
     document.getElementById("timer").innerHTML = "EXPIRED";
     localTicketNumber=localStorage.getItem("TicketNumber");
+    highestScore=localStorage.getItem("highestScore");
+    currentScore=localStorage.getItem("Current2048Score");
+
+    if(currentScore>highestScore){
+      twozerofoureightRef.child(localTicketNumber).update({
+        Score: currentScore
+      });
+      /*localStorage.setItem("highestScore",currentScore);*/
+    }
     ticketRef.child(localTicketNumber).update({
       Status:'Expired',
       RemainingTime:0
