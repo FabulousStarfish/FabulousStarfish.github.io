@@ -471,6 +471,11 @@ var x = setInterval(function()
     clearInterval(x);
 	document.getElementById("timer").innerHTML = "EXPIRED";
 	localTicketNumber=localStorage.getItem("TicketNumber");
+	if(score>highscores[0]){
+		hextrisRef.child(localTicketNumber).update({
+				Score:score
+				});
+	}
     ticketRef.child(localTicketNumber).update({
 	  Status:'Expired',
 	  RemainingTime:0
