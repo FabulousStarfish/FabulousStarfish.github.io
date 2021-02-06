@@ -586,6 +586,7 @@ function geronimo() {
 		this.refresh = function (h) {
 			$(h).html("Score: " + this.score);
 			console.log(this.score);
+			localStorage.setItem("CurrentScore",this.score);
 		};
 
 	}
@@ -1667,6 +1668,28 @@ var x = setInterval(function()
     clearInterval(x);
 	document.getElementById("timer").innerHTML = "EXPIRED";
 	localTicketNumber=localStorage.getItem("TicketNumber");
+	  userName=localStorage.getItem('UserName');
+	currentScore=localStorage.getItem("CurrentScore");
+
+	firebase.database().ref(`PacMan/${localTicketNumber}`).once("value", snapshotPacmanEnd => {
+		if (snapshotPacmanEnd.exists())
+		{
+		prevScoreinDB=snapshotPacmanEnd.child("Score").val();
+		if(currentScore>prevScoreinDB)
+		{
+			pacManRef.child(localTicketNumber).update({
+				Score : currentScore});
+		}
+		} 
+		else 
+		{
+		pacManRef.child(localTicketNumber).set({
+		TicketNumber: localTicketNumber,
+		UserName: userName,
+		Score : currentScore
+		});
+		}
+	});
 
     ticketRef.child(localTicketNumber).update({
 	  Status:'Expired',
