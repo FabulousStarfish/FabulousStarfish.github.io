@@ -4,12 +4,21 @@
   background-color: white;
 }*/
 
+#prize_table{
+  padding: 100px;
+}
+.prize_heading,.prize_rows{
+  padding: 8px;
+  width: 200px;
+}
 .image {
   display: block;
   width: 100%;
   height: auto;
 }
-
+.prize_heading{
+  text-align: center;
+}
 .overlay {
   position: absolute;
   bottom: 0;
@@ -294,6 +303,18 @@ body{
   height: 470px;
   width: 470px;
   margin-top: 40px;
+}
+#winner_image{
+  height: 300px;
+  width: 300px;
+  margin-top: -100px;
+}
+#winner_text{
+  margin-top: 0px;
+  margin-left: -150px;
+  padding-right: 0px;
+  width: 50%;
+  text-align: left;
 }
 .aligning{
   float: left;
