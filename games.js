@@ -48,7 +48,7 @@ hextrisRef=this.database.ref('/Hextris');
 pacmanRef=this.database.ref('/PacMan');
 twozerofoureightRef=this.database.ref('/TZFE');
 
-var topTenHextris=this.database.ref("/Hextris").orderByChild("Score").limitToLast(25);
+var topTenHextris=this.database.ref("/Hextris").orderByChild("Score").limitToLast(40);
 
 topTenHextris.once('value', function(snapshot){
     console.log("hello")
@@ -90,7 +90,7 @@ if(localStorage.getItem("TicketNumber")!=null){
     
 }
 
-var topTenPacMan=this.database.ref("/PacMan").orderByChild("Score").limitToLast(25);
+var topTenPacMan=this.database.ref("/PacMan").orderByChild("Score").limitToLast(40);
 
 topTenPacMan.once('value', function(snapshot){
     console.log("hello")
@@ -132,7 +132,7 @@ if(localStorage.getItem("TicketNumber")!=null){
     
 }
 
-var topTen2048=this.database.ref("/TZFE").orderByChild("Score").limitToLast(25);
+var topTen2048=this.database.ref("/TZFE").orderByChild("Score").limitToLast(40);
 
 topTen2048.once('value', function(snapshot){
     console.log("hello")
